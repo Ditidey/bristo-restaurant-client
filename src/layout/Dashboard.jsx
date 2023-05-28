@@ -1,8 +1,10 @@
 import React from 'react';
 import { FaBars, FaCalendarAlt, FaHome, FaShoppingBasket, FaShoppingCart, FaWallet } from 'react-icons/fa';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
+import useCart from '../hooks/useCart';
 
 const Dashboard = () => {
+    const [cart] = useCart();
     return (
         <div>
             <div className="drawer drawer-mobile">
@@ -10,20 +12,21 @@ const Dashboard = () => {
                 <div className="drawer-content flex flex-col items-center justify-center">
                     <Outlet></Outlet>
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
-
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side bg-yellow-700 ">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                    <ul className="menu p-4 w-80 text-base-content">
                          
-                        <li><Link><FaHome></FaHome> User Home</Link></li>
-                        <li><Link><FaCalendarAlt></FaCalendarAlt> Reservation</Link></li>
-                        <li><Link><FaWallet></FaWallet> Payment History</Link></li>
-                        <li><Link><FaShoppingCart></FaShoppingCart> My Cart</Link></li>
+                        <li><NavLink to='/dashboard/home'><FaHome></FaHome> User Home</NavLink></li>
+                        <li><NavLink to='/dashboard/reservations'><FaCalendarAlt></FaCalendarAlt> Reservation</NavLink></li>
+                        <li><NavLink to='/dashboard/history'><FaWallet></FaWallet> Payment History</NavLink></li>
+                        <li><NavLink to='/dashboard/mycart'><FaShoppingCart></FaShoppingCart> My Cart
+                        <span className='badge'>+{cart.length}</span>
+                        </NavLink></li>
                         <div className='divider'></div>
-                        <li><Link to='/'><FaHome></FaHome> Home</Link></li>
-                        <li><Link to='/menu'><FaBars></FaBars> Menu</Link></li>
-                        <li><Link to='/order/salad'><FaShoppingBasket></FaShoppingBasket>  Our order</Link></li>
+                        <li><NavLink to='/'><FaHome></FaHome> Home</NavLink></li>
+                        <li><NavLink to='/menu'><FaBars></FaBars> Menu</NavLink></li>
+                        <li><NavLink to='/order/salad'><FaShoppingBasket></FaShoppingBasket>  Our order</NavLink></li>
                     </ul>
 
                 </div>
