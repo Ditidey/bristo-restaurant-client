@@ -4,6 +4,9 @@ import Home from "../pages/home/Home";
 import MenuMain from "../pages/menuPage/MenuMain";
 import Order from "../pages/order/Order";
 import Login from "../pages/login/Login";
+import Register from "../pages/login/Register";
+import Dashboard from "../layout/Dashboard";
+import MyCart from "../pages/dashPage/UserDash/MyCart";
 
 const router = createBrowserRouter([
     {
@@ -25,8 +28,22 @@ const router = createBrowserRouter([
         {
             path: '/login',
             element: <Login></Login>
+        },
+        {
+            path: '/register',
+            element: <Register></Register>
         }
        ]
+    },
+    {
+        path: 'dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: 'mycart',
+                element: <MyCart></MyCart>
+            }
+        ]
     }
 ])
 
