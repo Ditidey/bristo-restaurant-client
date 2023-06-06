@@ -3,6 +3,7 @@ import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { contextProvider } from '../../Authprovider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
     // const captchaRef = useRef();
@@ -74,12 +75,7 @@ const Login = () => {
                         </div>
                     </form>
                     <Link to='/register' className='ms-20 mb-2 text-blue-500'>New to here? create new account</Link>
-                    <div className='flex space-x-4 pb-6 ps-40'>
-                         
-                        <FaFacebook className='text-blue-500'></FaFacebook>
-                        <FaGoogle className='text-yellow-500'></FaGoogle>
-                        <FaGithub></FaGithub>
-                    </div>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

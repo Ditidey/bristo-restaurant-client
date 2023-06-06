@@ -5,6 +5,7 @@ import Cover from '../../shared/cover/Cover';
 import SectionTitle from '../../../components/SectionTitle';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const MyCart = () => {
     useTitle('my cart');
@@ -47,7 +48,7 @@ const MyCart = () => {
             <div className='flex uppercase justify-evenly items-center mb-6'>
                 <h3 className="text-3xl">Total Order: {cart.length}</h3>
                 <h3 className="text-3xl">Total price: {total}</h3>
-                <button className='btn btn-sm btn-warning'>pay</button>
+                 <Link to='/dashboard/payment'><button className='btn btn-sm btn-warning'>pay</button></Link>
             </div>
 
             <div className="overflow-x-auto w-full p-10">

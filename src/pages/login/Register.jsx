@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { contextProvider } from '../../Authprovider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -14,8 +15,22 @@ const Register = () => {
         console.log(data)
         createUser(data.email, data.password)
         .then(result =>{
-            console.log(result.user)
+            const saveUser = {name: data.name, email: data.email, img: data.photo}
             userUpdate(data.name, data.photo)
+            fetch('http://localhost:5000/users', {
+                  method: 'POST',
+                  headers: {'content-type': 'application/json'},
+                  body: JSON.stringify(saveUser)
+            })
+            .then(res => res.json())
+            .then(da => {
+                if(da.insertedId){
+                    Swal.fire({
+                        text: 'Successful',
+                        icon: 'success'
+                    })
+                }
+            })
             .then(()=>{})
             .catch((e)=>{console.log(e)})
             navigate(from, {replace:true})

@@ -7,7 +7,7 @@ const ProtectedRoute = ({children}) => {
     const {user, loading} = useContext(contextProvider);
     const location = useLocation();
     if(loading){
-        return <p className='animate-bounce'>Loading</p>
+        return <p className='animate-bounce'>Loading.....</p>
     }
     if(user){
         return children;
