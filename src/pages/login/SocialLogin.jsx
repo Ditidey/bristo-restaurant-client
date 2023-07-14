@@ -22,7 +22,12 @@ const SocialLogin = () => {
           })
           .then(res => res.json())
           .then(da => {
-             
+             Swal.fire({
+                icon: 'success',
+                text: 'Login successful',
+                timer: 1500,
+                showConfirmButton: false
+             })
               navigate(from, {replace:true})
           })
         })
