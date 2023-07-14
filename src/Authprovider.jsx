@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { app } from './firebase';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
-import axios from 'axios';
+// import axios from 'axios';
 
 export const contextProvider = createContext();
 const auth = getAuth(app)
@@ -36,20 +36,20 @@ const Authprovider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
 
-            if (currentUser) {
-                axios.post('http://localhost:5000/jwt', { email: currentUser.email })
-                    .then(data => {
-                        console.log(data)
-                        localStorage.setItem('access-token', data.data.token);
-                        setLoading(false)
-                    }
-                    )
+            // if (currentUser) {
+            //     axios.post('https://bristo-restaurant-server.vercel.app/jwt', { email: currentUser.email })
+            //         .then(data => {
+            //             console.log(data)
+            //             localStorage.setItem('access-token', data.data.token);
+            //             setLoading(false)
+            //         }
+            //         )
 
-            }
-            else {
-                localStorage.removeItem('access-token')
-                setLoading(false)
-            }
+            // }
+            // else {
+            //     localStorage.removeItem('access-token')
+            //     setLoading(false)
+            // }
              
         });
         return () => {

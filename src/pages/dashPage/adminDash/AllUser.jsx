@@ -15,7 +15,7 @@ const AllUser = () => {
 
 
      const handleAdminRole = user =>{
-         fetch(`http://localhost:5000/users/admin/${user._id}`,
+         fetch(`https://bristo-restaurant-server.vercel.app/users/admin/${user._id}`,
          {
             method: 'PATCH'
          })

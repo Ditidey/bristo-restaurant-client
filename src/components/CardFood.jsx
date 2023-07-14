@@ -14,7 +14,7 @@ const CardFood = ({ item }) => {
     const handleAddToCart = item =>{
         if(user && user.email){
             const cartItem = {foodId: _id, email: user.email, name, price, image, recipe}
-            fetch('http://localhost:5000/carts',{
+            fetch('https://bristo-restaurant-server.vercel.app/carts',{
                 method: 'post',
                 headers: {'content-type': 'application/json'},
                 body: JSON.stringify(cartItem)
